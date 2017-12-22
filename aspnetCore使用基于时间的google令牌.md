@@ -141,7 +141,7 @@
             _loginLogService = loginLogService;
         }
 
-	/// <summary>
+		/// <summary>
         /// 验证登陆token
         /// </summary>
         /// <param name="userName"></param>
@@ -178,7 +178,7 @@
             return RedirectToAction(nameof(Login));
         }
 
-		/// <summary>
+	/// <summary>
         /// 获取令牌验证器二维码地址
         /// </summary>
         /// <param name="userName"></param>
