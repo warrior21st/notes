@@ -116,7 +116,7 @@
     }
 
 #### AccountController
-	public class AccountController : BaseController
+    public class AccountController : BaseController
     {
         private readonly IUserTwoFactorTokenProvider<DexUser> _userTwoFactorTokenProvider;
         private readonly SignInManager<DexUser> _signInManager;
@@ -141,7 +141,7 @@
             _loginLogService = loginLogService;
         }
 
-		/// <summary>
+	/// <summary>
         /// 验证登陆token
         /// </summary>
         /// <param name="userName"></param>
