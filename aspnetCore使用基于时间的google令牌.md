@@ -1,7 +1,7 @@
 ## aspnetCore使用基于时间的google令牌
 #### 依赖
-- aspnetcore 2.0
-- OtpSharp.Core
+- Microsoft.AspNetCore.All 2.0.0
+- OtpSharp.Core 1.0.0
 #### GoogleAuthenticatorTokenProvider
 	public class GoogleAuthenticatorTokenProvider : TotpSecurityStampBasedTokenProvider<DexUser>
     {
