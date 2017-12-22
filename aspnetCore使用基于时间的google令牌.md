@@ -1,4 +1,5 @@
 ## aspnetCore使用基于时间的google令牌
+- 参考https://www.jerriepelser.com/blog/using-google-authenticator-asp-net-identity
 #### 依赖
 - Microsoft.AspNetCore.All 2.0.0
 - OtpSharp.Core 1.0.0
