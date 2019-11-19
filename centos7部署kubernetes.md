@@ -33,6 +33,6 @@
 
 ### 方式1：使用systemd运行核心服务
 - 对于master，需要运行etcd、kube-apiserver、kube-controller-manager、kube-scheduler，注意配置服务依赖。
-- 对于node，需要运行docker，kubelet
+- 对于node，需要运行kubelet、docker
 - [v1.9.11版kube-apiserver、kube-controller-manager、kube-scheduler、kubelet、kubectl、kub-proxy下载地址： https://storage.googleapis.com/kubernetes-release/release/v1.9.11/kubernetes-server-linux-amd64.tar.gz
 - v1.9.11版验证过的etcd(release地址：https://github.com/etcd-io/etcd/releases/tag/v3.1.1)，tar下载地址：https://github-production-release-asset-2e65be.s3.amazonaws.com/11225014/a7f9d1d0-6888-11e7-8b3f-98f6f4c2ec78?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20191119%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20191119T072518Z&X-Amz-Expires=300&X-Amz-Signature=2d6b71f0cbd5c7482fbc07d51ecd7ed05ee20b84eca31b6843b6c59c9c898f06&X-Amz-SignedHeaders=host&actor_id=13977767&response-content-disposition=attachment%3B%20filename%3Detcd-v3.1.10-linux-amd64.tar.gz&response-content-type=application%2Foctet-stream
