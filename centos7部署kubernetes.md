@@ -12,7 +12,7 @@
 *   Update kube-dns 1.14.7 ([#54443](https://github.com/kubernetes/kubernetes/pull/54443),[ @bowei](https://github.com/bowei))
 *   Update influxdb to v1.3.3 and grafana to v4.4.3 ([#53319](https://github.com/kubernetes/kubernetes/pull/53319),[ @kairen](https://github.com/kairen))
 
-## docker yum install 
+## 安装docker-ce-17.03.2
     sudo yum install yum-utils device-mapper-persistent-data lvm2
     sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
     sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
@@ -20,11 +20,12 @@
     docker-ce-17.03.2.ce-1.el7.centos.x86_64 \
     docker-ce-selinux-17.03.2.ce-1.el7.centos.noarch
 
-## kubernetes 核心服务(几种部署方式均需要提供这几个服务):
+## kubernetes 核心服务(几种部署方式均是使机器提供这几个服务):
 - kube-apiserver
 - kube-controller-manager
 - kube-scheduler
-- etcd
+## kubernetes 依赖服务
+- etcd(一个key-value式数据库)
 
 ## kubernetes 运行时组件
 - kubelet
@@ -36,20 +37,148 @@
 - 对于node，需要运行kubelet、docker
 - [v1.9.11版kube-apiserver、kube-controller-manager、kube-scheduler、kubelet、kubectl、kub-proxy下载地址： https://storage.googleapis.com/kubernetes-release/release/v1.9.11/kubernetes-server-linux-amd64.tar.gz
 - v1.9.11版验证过的etcd(release地址：https://github.com/etcd-io/etcd/releases/tag/v3.1.1)，tar下载地址：https://github-production-release-asset-2e65be.s3.amazonaws.com/11225014/a7f9d1d0-6888-11e7-8b3f-98f6f4c2ec78?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20191119%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20191119T072518Z&X-Amz-Expires=300&X-Amz-Signature=2d6b71f0cbd5c7482fbc07d51ecd7ed05ee20b84eca31b6843b6c59c9c898f06&X-Amz-SignedHeaders=host&actor_id=13977767&response-content-disposition=attachment%3B%20filename%3Detcd-v3.1.10-linux-amd64.tar.gz&response-content-type=application%2Foctet-stream
-
-### master services
+- 将kube-apiserver、
+### master
 ##### etcd.service
-    todo
+    [Unit]	
+	Description=etcd	
+	
+	[Service]
+	Type=notify	
+	WorkingDirectory=/var/lib/etcd	
+	ExecStart=/usr/bin/etcd --listen-client-urls=http://127.0.0.1:2379 --advertise-client-urls=http://127.0.0.1:2379
+	SyslogIdentifier=etcd-k8s	
+	User=root		
+	Restart=always
+	LimitNOFILE=65536	
+	RestartSec=10
+	
+	[Install]	
+	WantedBy=multi-user.target
 ##### kube-apiserver.service
-    todo
+    [Unit]
+	Description=Kubernetes API Server
+	Documentation=https://kubernetes.io/docs/concepts/overview/components/#kube-apiserver https://kubernetes.io/docs/reference/generated/kube-apiserver/
+	After=network.target
+	After=etcd.service
+	
+	[Service]
+	Environment=KUBE_LOGTOSTDERR="--logtostderr=true"
+	Environment=KUBE_LOG_LEVEL="--v=0"
+	Environment=KUBE_ALLOW_PRIV="--allow-privileged=false"
+	Environment=KUBE_MASTER="--master=http://192.168.1.100:8080"
+	Environment=KUBE_API_ADDRESS="--insecure-bind-address=0.0.0.0"
+	Environment=KUBE_API_PORT="--port=8080"
+	Environment=KUBELET_PORT="--kubelet-port=10250"
+	Environment=KUBE_ETCD_SERVERS="--etcd-servers=http://127.0.0.1:2379"
+	Environment=KUBE_SERVICE_ADDRESSES="--service-cluster-ip-range=10.254.0.0/16"
+	Environment=KUBE_ADMISSION_CONTROL="--admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota"
+	
+	
+	# Add your own!
+	Environment=OTHER_ARGS=""
+	
+	User=root
+	ExecStart=/usr/bin/kube-apiserver \
+		    $KUBE_LOGTOSTDERR \
+		    $KUBE_LOG_LEVEL \
+		    $KUBE_ETCD_SERVERS \
+		    $KUBE_API_ADDRESS \
+		    $KUBE_API_PORT \
+		    $KUBELET_PORT \
+		    $KUBE_ALLOW_PRIV \
+		    $KUBE_SERVICE_ADDRESSES \
+		    $KUBE_ADMISSION_CONTROL \
+		    $OTHER_ARGS
+	Restart=on-failure
+	Type=notify
+	LimitNOFILE=65536
+	
+	[Install]
+	WantedBy=multi-user.target
 ##### kube-controller-manager.service
-    todo
+	[Unit]
+	Description=Kubernetes Controller Manager
+	Documentation=https://kubernetes.io/docs/concepts/overview/components/#kube-controller-manager https://kubernetes.io/docs/reference/generated/kube-controller-manager/
+	
+	[Service]
+	Environment=KUBE_LOGTOSTDERR="--logtostderr=true"
+	Environment=KUBE_LOG_LEVEL="--v=0"
+	Environment=KUBE_MASTER="--master=http://192.168.1.100:8080"
+	
+	# Add your own!
+	Environment=OTHER_ARGS=""
+	
+	User=root
+	ExecStart=/usr/bin/kube-controller-manager \
+		    $KUBE_LOGTOSTDERR \
+		    $KUBE_LOG_LEVEL \
+		    $KUBE_MASTER \
+		    $OTHER_ARGS
+	Restart=on-failure
+	LimitNOFILE=65536
+	
+	[Install]
+	WantedBy=multi-user.target
 ##### kube-schedulers.service
-    todo
-### node services
+    [Unit]
+	Description=Kubernetes Scheduler Plugin
+	Documentation=https://kubernetes.io/docs/concepts/overview/components/#kube-scheduler https://kubernetes.io/docs/reference/generated/kube-scheduler/
+	
+	[Service]
+	Environment=KUBE_LOGTOSTDERR="--logtostderr=true"
+	Environment=KUBE_LOG_LEVEL="--v=0"
+	Environment=KUBE_MASTER="--master=http://192.168.1.100:8080"
+	
+	# Add your own!
+	Environment=OTHER_ARGS=""
+	
+	User=root
+	ExecStart=/usr/bin/kube-scheduler \
+		    $KUBE_LOGTOSTDERR \
+		    $KUBE_LOG_LEVEL \
+		    $KUBE_MASTER \
+		    $OTHER_ARGS
+	Restart=on-failure
+	LimitNOFILE=65536
+	
+	[Install]
+	WantedBy=multi-user.target
+### slave node
 ##### kubelet.service
-    todo
+	[Unit]
+	Description=Kubernetes Kubelet Server
+	Documentation=https://kubernetes.io/docs/concepts/overview/components/#kubelet https://kubernetes.io/docs/reference/generated/kubelet/
+	After=docker.service
+	Requires=docker.service
+	
+	[Service]
+	User=root
+	WorkingDirectory=/var/lib/kubelet
+	ExecStart=/usr/bin/kubelet --logtostderr=true --v=0 --kubeconfig=/etc/kubernetes/kubelet.kubeconfig --port=10250 --hostname-override=192.168.1.101 --cgroup-driver=cgroupfs --fail-swap-on=true
+	Restart=on-failure
+	KillMode=process
+	
+	[Install]
+	WantedBy=multi-user.target
+##### kubelet.kubeconfig
+	apiVersion: v1
+	clusters:
+	- cluster:
+	    server: http://192.168.1.100:8080
+	  name: kubernetes-systemd
+	contexts:
+	- context:
+	    cluster: kubernetes-systemd
+	    user: system:node:192.168.1.101
+	  name: system:node:192.168.1.101@kubernetes-systemd
+	current-context: system:node:192.168.1.101@kubernetes-systemd
+	kind: Config
+	preferences: {}
+	users:
+	- name: system:node:192.168.1.101
 ### 部署方式2: 使用docker容器运行服务
+	todo
 
-参照
+## 参考文档
 - https://medium.com/containerum/4-ways-to-bootstrap-a-kubernetes-cluster-de0d5150a1e4
