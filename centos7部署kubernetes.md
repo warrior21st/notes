@@ -19,7 +19,9 @@
     sudo yum install --setopt=obsoletes=0 \
     docker-ce-17.03.2.ce-1.el7.centos.x86_64 \
     docker-ce-selinux-17.03.2.ce-1.el7.centos.noarch
-
+## 关闭swap
+	swapoff -a
+	vi /etc/fstab 注释掉swap那一行
 ## kubernetes 核心服务(几种部署方式均是使机器提供这几个服务):
 - kube-apiserver
 - kube-controller-manager
