@@ -180,7 +180,8 @@
 	users:
 	- name: system:node:192.168.1.101
 ### 部署方式2: 使用docker容器运行服务
-	todo
+	todo 
+	
 
 ## 参考文档
 - https://medium.com/containerum/4-ways-to-bootstrap-a-kubernetes-cluster-de0d5150a1e4
