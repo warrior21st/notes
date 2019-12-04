@@ -9,7 +9,7 @@
 ### 添加组和用户
     groupadd redisgroup
     useradd -r -g redisgroup redis
-    chown -R redisgroup:redis /redis/redis-5.0.7
+    chown -R redis:redisgroup /redis/redis-5.0.7
 #### redis.service
     [Unit]
     Description=redis server 5.0.7
