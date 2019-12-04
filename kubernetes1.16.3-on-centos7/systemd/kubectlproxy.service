@@ -1,0 +1,14 @@
+[Unit]	
+Description=kubectl-proxy	
+
+[Service]	
+WorkingDirectory=/var/lib/kubectl	
+ExecStart=/k8s/bin/kubectl proxy --address=0.0.0.0 --accept-hosts='^*$' --port=8009
+SyslogIdentifier=kubectl-proxy-k8s	
+User=root		
+Restart=always
+LimitNOFILE=65536	
+RestartSec=10
+
+[Install]	
+WantedBy=multi-user.target

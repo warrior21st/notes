@@ -1,0 +1,23 @@
+[Unit]
+Description=Kubernetes Controller Manager
+Documentation=https://kubernetes.io/docs/concepts/overview/components/#kube-controller-manager https://kubernetes.io/docs/reference/generated/kube-controller-manager/
+
+[Service]
+Environment=KUBE_LOGTOSTDERR="--logtostderr=true"
+Environment=KUBE_LOG_LEVEL="--v=0"
+Environment=KUBE_MASTER="--master=http://192.168.1.100:8080"
+
+# Add your own!
+Environment=OTHER_ARGS=""
+
+User=root
+ExecStart=/k8s/bin/kube-controller-manager \
+	    $KUBE_LOGTOSTDERR \
+	    $KUBE_LOG_LEVEL \
+	    $KUBE_MASTER \
+	    $OTHER_ARGS
+Restart=on-failure
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

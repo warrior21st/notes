@@ -1,0 +1,38 @@
+[Unit]
+Description=Kubernetes API Server
+Documentation=https://kubernetes.io/docs/concepts/overview/components/#kube-apiserver https://kubernetes.io/docs/reference/generated/kube-apiserver/
+After=network.target
+After=etcd.service
+
+[Service]
+Environment=KUBE_LOGTOSTDERR="--logtostderr=true"
+Environment=KUBE_LOG_LEVEL="--v=0"
+Environment=KUBE_ALLOW_PRIV="--allow-privileged=false"
+Environment=KUBE_MASTER="--master=http://192.168.1.100:8080"
+Environment=KUBE_API_ADDRESS="--insecure-bind-address=0.0.0.0"
+Environment=KUBE_API_PORT="--port=8080"
+Environment=KUBELET_PORT="--kubelet-port=10250"
+Environment=KUBE_ETCD_SERVERS="--etcd-servers=http://127.0.0.1:2379"
+Environment=KUBE_SERVICE_ADDRESSES="--service-cluster-ip-range=10.254.0.0/16"
+Environment=KUBE_ADMISSION_CONTROL="--admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota"
+# Add your own!
+Environment=OTHER_ARGS=""
+
+Type=notify
+User=root
+ExecStart=/k8s/bin/kube-apiserver \
+	    $KUBE_LOGTOSTDERR \
+	    $KUBE_LOG_LEVEL \
+	    $KUBE_ETCD_SERVERS \
+	    $KUBE_API_ADDRESS \
+	    $KUBE_API_PORT \
+	    $KUBELET_PORT \
+	    $KUBE_ALLOW_PRIV \
+	    $KUBE_SERVICE_ADDRESSES \
+	    $KUBE_ADMISSION_CONTROL \
+	    $OTHER_ARGS
+Restart=on-failure
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

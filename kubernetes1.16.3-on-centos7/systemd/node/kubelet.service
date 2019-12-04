@@ -1,0 +1,15 @@
+[Unit]
+Description=Kubernetes Kubelet Server
+Documentation=https://kubernetes.io/docs/concepts/overview/components/#kubelet https://kubernetes.io/docs/reference/generated/kubelet/
+After=docker.service
+Requires=docker.service
+
+[Service]
+User=root
+WorkingDirectory=/var/lib/kubelet
+ExecStart=/k8s/bin/kubelet --logtostderr=true --v=0 --kubeconfig=/k8s/kubelet.kubeconfig --port=10250 --hostname-override=192.168.1.101 --cgroup-driver=cgroupfs --fail-swap-on=true
+Restart=on-failure
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

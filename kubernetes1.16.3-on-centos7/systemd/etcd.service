@@ -1,0 +1,15 @@
+[Unit]	
+Description=etcd	
+
+[Service]
+Type=notify	
+WorkingDirectory=/var/lib/etcd	
+ExecStart=/k8s/bin/etcd --data-dir=/var/lib/etcd --listen-client-urls=http://127.0.0.1:2379 --advertise-client-urls=http://127.0.0.1:2379
+SyslogIdentifier=etcd-k8s	
+User=root		
+Restart=always
+LimitNOFILE=65536	
+RestartSec=10
+
+[Install]	
+WantedBy=multi-user.target
