@@ -1,6 +1,6 @@
-#### 安装命令（将命令行工作目录cd到{mysql目录}\bin）  
+#### 安装命令（powershell管理员模式，将命令行工作目录cd到{mysql目录}\bin）
     ./mysqld.exe --initialize-insecure
-    mysqld install
+    ./mysqld.exe install
     net start mysql
 
 #### my.ini
