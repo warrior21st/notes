@@ -14,10 +14,6 @@
     tar -zvxf ./redis-5.0.7.tar.gz
     cd ./redis-5.0.7
     make MALLOC=libc
-### 添加组和用户
-    groupadd redisgroup
-    useradd -r -g redisgroup redis
-    chown -R redis:redisgroup /redis/redis-5.0.7
 ### 修改redis.conf
     vi /redis/redis-5.0.7/redis.conf
 - 设置 daemonize yes
