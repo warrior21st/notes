@@ -1,39 +1,43 @@
 #### 下载并解压mysql
 
-	mkdir /mysql
-	cd /mysql
-	wget https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.18-linux-glibc2.12-x86_64.tar.xz
-	tar xvf mysql-8.0.18-linux-glibc2.12-x86_64 ./
-	mkdir ./mysql-8.0.18-linux-glibc2.12-x86_64/data
-	mkdir ./mysql-8.0.18-linux-glibc2.12-x86_64/log
+	mkdir /usr/local
+	wget https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.18-linux-glibc2.12-x86_64.tar.xz -O /root/mysql-8.0.18-linux-glibc2.12-x86_64.tar.xz
+	tar xvf /root/mysql-8.0.18-linux-glibc2.12-x86_64 /usr/local
+	mv /usr/local/mysql-8.0.18-linux-glibc2.12-x86_64 /usr/local/mysql-8.0.18
+	mkdir /usr/local/mysql-8.0.18/data
+	mkdir /var/log/mysql
+	mkdir /var/run/mysql
 
 #### 添加用户和组并赋予所有权
 
 	groupadd mysqlgroup
 	useradd -r -g mysqlgroup mysql
-	cd mysql-8.0.18-linux-glibc2.12-x86_64
-	chown -R mysql:mysqlgroup ./
+	chown -R mysql:mysqlgroup /usr/local/mysql-8.0.18
+	chmod -R 755 /var/log/mysql
+	chmod -R 755 /var/run/mysql
+	chown -R mysql:mysqlgroup /var/log/mysql
+	chown -R mysql:mysqlgroup /var/run/mysql
 
 #### 安装libaio
 
 	yum install libaio*
 
 #### 初始化
-	./bin/mysqld --defaults-file=/mysql/my.cnf --user=mysql --initialize
+	/usr/local/mysql-8.0.18/bin/mysqld --defaults-file=/usr/local/mysql-8.0.18/my.cnf --user=mysql --initialize
 
 - 如果报error while loading shared libraries: libaio.so.1...请执行 yum install libaio后再执行初始化
 
 #### my.cnf
 	[mysqld]
 	user=mysql
-	basedir=/mysql/mysql-8.0.18-linux-glibc2.12-x86_64
-	datadir=/mysql/mysql-8.0.18-linux-glibc2.12-x86_64/data
+	basedir=/usr/local/mysql-8.0.18
+	datadir=/usr/local/mysql-8.0.18/data
 	port=3306
 	max_connections=1024
 	max_connect_errors=10
 	lower_case_table_names=1
 	socket=/tmp/mysql.sock
-	max_allowed_packet=20M
+	max_allowed_packet=32M
 	#默认使用“mysql_native_password”插件认证
 	default_authentication_plugin=mysql_native_password
 	#转换查询为缓慢查询
@@ -42,8 +46,8 @@
 	long_query_time=2
 
 	[mysqld_safe]
-	log-error=/mysql/mysql-8.0.18-linux-glibc2.12-x86_64/log/mariadb.log
-	pid-file=/mysql/mysql-8.0.18-linux-glibc2.12-x86_64/data/mysqld.pid
+	log-error=/var/log/mysql/mariadb.log
+	pid-file=/var/run/mysql/mysqld.pid
 	!includedir /etc/my.cnf.d
 
 #### mysqld.service
@@ -59,7 +63,7 @@
 
 	[Service]
 	User=mysql
-	PIDFile=/mysql/mysql-8.0.18-linux-glibc2.12-x86_64/data/mysqld.pid
+	PIDFile=/var/run/mysql/mysqld.pid
 	# Disable service start and stop timeout logic of systemd for mysqld service.
 	TimeoutSec=0
 	# Execute pre and post scripts as root
@@ -67,7 +71,7 @@
 	# Needed to create system tables
 	#ExecStartPre=/usr/bin/mysqld_pre_systemd
 	# Start main service
-	ExecStart=/mysql/mysql-8.0.18-linux-glibc2.12-x86_64/bin/mysqld --defaults-file=/mysql/my.cnf --user=mysql --pid-file=/mysql/mysql-8.0.18-linux-glibc2.12-x86_64/data/mysqld.pid --daemonize
+	ExecStart=/usr/local/mysql-8.0.18/bin/mysqld --defaults-file=/usr/local/mysql-8.0.18/my.cnf --user=mysql --pid-file=/var/run/mysql/mysqld.pid --daemonize
 	# 注意这里要加上 --daemonize 
 	# Use this to switch malloc implementation
 	#EnvironmentFile=-/etc/sysconfig/mysql
@@ -91,4 +95,5 @@
 	alter user 'root'@'%' identified with  mysql_native_password by  'newpass#123';
 	flush privileges;
 	alter  user 'root'@'%' identified by 'newpass#123';
+	flush privileges;
 
