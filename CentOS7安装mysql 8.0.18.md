@@ -1,10 +1,10 @@
 #### 下载并解压mysql
 
-	mkdir /usr/local
+	mkdir /mysql
 	wget https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.18-linux-glibc2.12-x86_64.tar.xz -O /root/mysql-8.0.18-linux-glibc2.12-x86_64.tar.xz
-	tar xvf /root/mysql-8.0.18-linux-glibc2.12-x86_64 /usr/local
-	mv /usr/local/mysql-8.0.18-linux-glibc2.12-x86_64 /usr/local/mysql-8.0.18
-	mkdir /usr/local/mysql-8.0.18/data
+	tar xvf /root/mysql-8.0.18-linux-glibc2.12-x86_64 /mysql
+	mv /mysql/mysql-8.0.18-linux-glibc2.12-x86_64 /mysql/mysql-8.0.18
+	mkdir /mysql/mysql-8.0.18/data
 	mkdir /var/log/mysql
 	mkdir /var/run/mysql
 
@@ -12,7 +12,7 @@
 
 	groupadd mysqlgroup
 	useradd -r -g mysqlgroup mysql
-	chown -R mysql:mysqlgroup /usr/local/mysql-8.0.18
+	chown -R mysql:mysqlgroup /mysql/mysql-8.0.18
 	chmod -R 755 /var/log/mysql
 	chmod -R 755 /var/run/mysql
 	chown -R mysql:mysqlgroup /var/log/mysql
@@ -23,15 +23,15 @@
 	yum install libaio*
 
 #### 初始化
-	/usr/local/mysql-8.0.18/bin/mysqld --defaults-file=/usr/local/mysql-8.0.18/my.cnf --user=mysql --initialize
+	/mysql/mysql-8.0.18/bin/mysqld --defaults-file=/mysql/mysql-8.0.18/my.cnf --user=mysql --initialize
 
 - 如果报error while loading shared libraries: libaio.so.1...请执行 yum install libaio后再执行初始化
 
 #### my.cnf
 	[mysqld]
 	user=mysql
-	basedir=/usr/local/mysql-8.0.18
-	datadir=/usr/local/mysql-8.0.18/data
+	basedir=/mysql/mysql-8.0.18
+	datadir=/mysql/mysql-8.0.18/data
 	port=3306
 	max_connections=1024
 	max_connect_errors=10
@@ -71,7 +71,7 @@
 	# Needed to create system tables
 	#ExecStartPre=/usr/bin/mysqld_pre_systemd
 	# Start main service
-	ExecStart=/usr/local/mysql-8.0.18/bin/mysqld --defaults-file=/usr/local/mysql-8.0.18/my.cnf --user=mysql --pid-file=/var/run/mysql/mysqld.pid --daemonize
+	ExecStart=/mysql/mysql-8.0.18/bin/mysqld --defaults-file=/mysql/mysql-8.0.18/my.cnf --user=mysql --pid-file=/var/run/mysql/mysqld.pid --daemonize
 	# 注意这里要加上 --daemonize 
 	# Use this to switch malloc implementation
 	#EnvironmentFile=-/etc/sysconfig/mysql
