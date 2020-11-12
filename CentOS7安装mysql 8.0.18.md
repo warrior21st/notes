@@ -1,7 +1,7 @@
 #### 下载并解压mysql
 
 	mkdir /mysql
-	wget https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.18-linux-glibc2.12-x86_64.tar.xz -O /root/mysql-8.0.18-linux-glibc2.12-x86_64.tar.xz
+	wget https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-8.0.18-linux-glibc2.12-x86_64.tar.xz -O /root/mysql-8.0.18-linux-glibc2.12-x86_64.tar.xz
 	tar xvf /root/mysql-8.0.18-linux-glibc2.12-x86_64 /mysql
 	mv /mysql/mysql-8.0.18-linux-glibc2.12-x86_64 /mysql/mysql-8.0.18
 	mkdir /mysql/mysql-8.0.18/data
