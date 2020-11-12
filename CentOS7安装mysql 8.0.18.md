@@ -48,7 +48,7 @@
 	[mysqld_safe]
 	log-error=/var/log/mysql/mariadb.log
 	pid-file=/var/run/mysql/mysqld.pid
-	!includedir /etc/my.cnf.d
+	#!includedir /etc/my.cnf.d
 
 #### mysqld.service
 	[Unit]
@@ -83,11 +83,11 @@
 
 #### 设置root密码
 
-	SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpass#123'); -- 8.0+版本密码必须要包含符号
+	ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'new#Pwd111'; -- 8.0+版本密码必须要包含符号
 
 #### 开启远程访问
 	USE mysql
-	UDPATE USER SET Host='%' WHERE User='root';
+	UPDATE USER SET Host='%' WHERE User='root';
 	FLUSH PRIVILEGES;
 
 #### 修改密码插件（解决 plugin caching_sha2_password could not be loaded）
