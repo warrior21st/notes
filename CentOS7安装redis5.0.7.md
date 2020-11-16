@@ -22,7 +22,7 @@
     //chown -R redis:redisgroup /var/log/redis
 ### 修改redis.conf
     vi /redis/redis-5.0.7/redis.conf
-- 设置 daemonize yes
+- 设置 daemonize yes （如果使用systemd管理则设为no）
 - 设置 supervised no
 - 设置 requirepass 访问密码
 - 如果需要开启外部连接，修改 bind 内网ip 127.0.0.1
