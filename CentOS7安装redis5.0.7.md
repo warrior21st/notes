@@ -1,18 +1,21 @@
 ## CentOS7 部署redis
-### 下载并编译redis
+### 安装编译环境
     yum -y install gcc gcc-c++ libstdc++-devel
+### 创建redis目录
     mkdir /redis
     cd /redis
+### 下载并编译安装tcl8.6.1（如果需要运行make test的话）
     wget http://downloads.sourceforge.net/tcl/tcl8.6.1-src.tar.gz
     tar xzvf tcl8.6.1-src.tar.gz  -C /usr/local/
     cd  /usr/local/tcl8.6.1/unix/
     ./configure
     make
     make install
-    cd /redis/redis-5.0.7
+### 下载并编译redis
+    cd /redis
     wget http://download.redis.io/releases/redis-5.0.7.tar.gz
     tar -zvxf ./redis-5.0.7.tar.gz
-    cd ./redis-5.0.7
+    cd /redis/redis-5.0.7
     make MALLOC=libc
 ### 添加组和用户
     //groupadd redisgroup
