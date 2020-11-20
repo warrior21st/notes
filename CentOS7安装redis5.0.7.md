@@ -44,7 +44,8 @@
     ExecStart=/redis/redis-5.0.7/src/redis-server /redis/redis-5.0.7/redis.conf --daemonize no --supervised systemd
     ExecStop=/redis/redis-5.0.7/src/redis-cli -h 127.0.0.1 -p 6379 -a 访问密码 shutdown
     Restart=always
-    RestartSec=10  # Restart service after 10 seconds if service crashes
+    # Restart service after 10 seconds if service crashes
+    RestartSec=10  
 
     [Install]
     WantedBy=multi-user.target

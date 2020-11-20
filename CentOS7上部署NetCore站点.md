@@ -15,7 +15,8 @@
 	WorkingDirectory=/root/wwwroot/zkor2.x	
 	ExecStart=/usr/bin/dotnet /root/wwwroot/zkor2.x/Zkor.COM.dll	
 	Restart=always	
-	RestartSec=10  # Restart service after 10 seconds if dotnet service crashes	
+	# Restart service after 10 seconds if dotnet service crashes	
+	RestartSec=10  
 	SyslogIdentifier=dotnet-zkor	
 	User=root	
 	Environment=ASPNETCORE_ENVIRONMENT=Production 	
