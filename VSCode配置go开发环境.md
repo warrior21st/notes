@@ -23,16 +23,15 @@
 #### 修改vscode settings.json,按ctrl+shift+p，输入settings，点击Open Settings(JSON)
     {        
         "go.formatTool": "gofmt",
-        "git.ignoreWindowsGit27Warning": true,
         "go.gocodePackageLookupMode": "go",
         "go.gotoSymbol.includeImports": true,
         "go.useCodeSnippetsOnFunctionSuggest": true,
         "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
         "go.gotoSymbol.includeGoroot": true,
         "go.autocompleteUnimportedPackages": true,
+        "go.useLanguageServer": true,
         "editor.quickSuggestions": true,
-        "editor.suggest.snippetsPreventQuickSuggestions": false,
-        "go.useLanguageServer": true
+        "editor.suggest.snippetsPreventQuickSuggestions": false
     }
 
 #### 修改vscode工作区设置(用于历史的项目)
