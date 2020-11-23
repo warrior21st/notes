@@ -19,6 +19,8 @@
     go get -u -v github.com/josharian/impl
     go get -u -v github.com/cweill/gotests
     go get -u -v github.com/rogpeppe/godef
+    go get -u -v golang.org/x/tools/gopls
+    go get -u -v github.com/stamblerre/gocode
 
 #### 修改vscode settings.json,按ctrl+shift+p，输入settings，点击Open Settings(JSON)
     {        
