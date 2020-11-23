@@ -1,4 +1,4 @@
-## VSCode搭建go开发环境
+## VSCode配置go开发环境
 ### 设置GOPATH路径（GOPATH路径是我们的工作区）
     go env -w GOPATH=工作区路径
 ### 打开GoMOD、再配置代理
