@@ -21,7 +21,7 @@
     go get -u -v github.com/josharian/impl
     go get -u -v github.com/cweill/gotests
     go get -u -v github.com/rogpeppe/godef
-### 设置fmt
+### 设置fmt 
 - 切到vscode，按ctrl+shift+p,输入settings,点击Open Settings(JSON)
 - 增加 "go.formatTool": "gofmt"
     
