@@ -6,7 +6,7 @@
 #### 在VSCode中安装Go插件
     code --install-extension golang.go
 #### 安装插件
-    go get -u -v golang.org/x/lint/golint //
+    go get -u -v golang.org/x/lint/golint
     go get -u -v github.com/sqs/goreturns
     go get -u -v github.com/mdempsky/gocode
     go get -u -v github.com/uudashr/gopkgs/cmd/gopkgs
