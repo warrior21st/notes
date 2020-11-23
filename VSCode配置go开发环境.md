@@ -1,14 +1,12 @@
 ## VSCode配置go开发环境
 
-#### 设置GOPATH路径（GOPATH路径是我们的工作区）
-    go env -w GOPATH=工作区路径
 #### 打开GoMOD、再配置代理
     go env -w GO111MODULE=on
     go env -w GOPROXY=https://goproxy.cn,direct
 #### 在VSCode中安装Go插件
     code --install-extension golang.go
 #### 安装插件
-    go get -u -v golang.org/x/lint/golint
+    go get -u -v golang.org/x/lint/golint //
     go get -u -v github.com/sqs/goreturns
     go get -u -v github.com/mdempsky/gocode
     go get -u -v github.com/uudashr/gopkgs/cmd/gopkgs
@@ -21,6 +19,22 @@
     go get -u -v github.com/josharian/impl
     go get -u -v github.com/cweill/gotests
     go get -u -v github.com/rogpeppe/godef
-### 设置fmt 
-- 切到vscode，按ctrl+shift+p,输入settings,点击Open Settings(JSON)
-- 增加 "go.formatTool": "gofmt"    
+
+#### 修改vscode settings.json,按ctrl+shift+p，输入settings，点击Open Settings(JSON)
+    {        
+        "go.formatTool": "gofmt",
+        "git.ignoreWindowsGit27Warning": true,
+        "go.gocodePackageLookupMode": "go",
+        "go.gotoSymbol.includeImports": true,
+        "go.useCodeSnippetsOnFunctionSuggest": true,
+        "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+        "go.gotoSymbol.includeGoroot": true,
+        "go.autocompleteUnimportedPackages": true,
+        "editor.quickSuggestions": true,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "go.useLanguageServer": true
+    }
+
+#### 修改vscode工作区设置(用于历史的项目)
+- 文件 -> 首选项 -> 设置 -> 工作区
+- 搜索 prevent,将"控制活动代码段是否阻止快速建议"去掉勾选
