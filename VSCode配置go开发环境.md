@@ -21,6 +21,7 @@
     go get -u -v github.com/rogpeppe/godef
     go get -u -v github.com/redefiance/go-find-references
     go get -u -v github.com/redefiance/ident
+    go get -u -v golang.org/x/tools/gopls
 
 #### 修改vscode settings.json,按ctrl+shift+p，输入settings，点击Open Settings(JSON)
     {        
