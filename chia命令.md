@@ -13,10 +13,10 @@
 #### Storage requirements（以1.0.5以上版本为例）
 | K-size      | RAM Default Usage | Temp. Size | Final Size |
 | ----------- | -------------------- | -------- | ---------- |
-| K=32        | 4608 MiB (4.5 GiB)   | 239 GiB  | 101.4 GiB  |
-| K=33        | 7400 MiB (7.3 GiB)   | 521 GiB  | 208.8 GiB  |
-| K=34        | 14800 MiB (14.5 GiB) | 1041 GiB | 429.8 GiB  |
-| K=35        | 29600 MiB (29 GiB)   | 2175 GiB | 884.1 GiB  |
+| K=32        | 4608 MiB (4.5 GiB)   | 332 GiB  | 101.4 GiB  |
+| K=33        | 7400 MiB (7.3 GiB)   | 589 GiB  | 208.8 GiB  |
+| K=34        | 14800 MiB (14.5 GiB) | 1177 GiB | 429.8 GiB  |
+| K=35        | 29600 MiB (29 GiB)   | 2355 GiB | 884.1 GiB  |
 
 ##### 参考
 - CLI-Commands：https://github.com/Chia-Network/chia-blockchain/wiki/CLI-Commands-Reference
