@@ -17,7 +17,7 @@
 | K=34        | 14800 MiB (14.5 GiB) | 1041 GiB | 429.8 GiB  |
 | K=35        | 29600 MiB (29 GiB)   | 2175 GiB | 884.1 GiB  |
 
-#### 参考
+##### 参考
 - CLI-Commands：https://github.com/Chia-Network/chia-blockchain/wiki/CLI-Commands-Reference
 - Storage requirements：https://github.com/Chia-Network/chia-blockchain/wiki/k-sizes
 
