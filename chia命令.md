@@ -1,8 +1,8 @@
 ## chia client commonds
-### windows p盘命令
-    cd %USERPROFILE%\AppData\Local\chia-blockchain\app-1.1.1\resources\app.asar.unpacked\daemon\
-    chia.exe plots create -k k大小 -n 1 -f 农民公钥 -p 矿池公钥 -t 临时文件路径 -d 最终文件路径 -r 2 -u 128 -e
-
+### p盘命令
+    chia路径/chia plots create -k k大小 -n 1 -f 农民公钥 -p 矿池公钥 -t 临时文件路径 -d 最终文件路径 -r 2 -u 128 -e
+    
+    //window默认安装路径：%USERPROFILE%\AppData\Local\chia-blockchain\app-1.1.1\resources\app.asar.unpacked\daemon\
 ### Storage requirements（以1.0.5以上版本为例）
 | K-size      | RAM Default Usage| Temp. Size | Final Size |
 | ----------- | -------------------- | -------- | ---------- |
