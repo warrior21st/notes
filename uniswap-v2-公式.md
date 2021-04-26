@@ -1,7 +1,7 @@
 ## uniswap-v2-core formulas
 ### swap
-    //x:token0储量
-    //y:token1储量
+    //x:交易对某个token的储量
+    //y:交易对另一个token的储量
     //x_in:x输入数量
     //y_out:y输出数量
     x * y =k
@@ -13,11 +13,21 @@
         =((x+x_in)*y-x*y)/(x+x_in)
         = (x*y + x_in*y - x*y)/(x+x_in)
         = x_in*y/(x+x_in)
-
     //得出：输出金额=输入金额 * 输出储量 / (输入储量+输入金额) 
 
+    (x + x_in) * (y - y_out)=k
+    x*(y - y_out) +  x_in*(y - y_out)=k
+    x_in*(y-y_out)=k-x*(y - y_out)
+    x_in=(k-x*(y - y_out))/(y-y_out)
+        =x*y-(x*(y - y_out))/(y-y_out)
+        =(x*y-(x*y-x*y_out))/(y-y_out)
+        =(x*y-x*y+x*y_out)/(y-y_out)
+        =x*y_out/(y-y_out)
+    //得出：输入金额=输入储量 * 输出金额 / (输出储量-输出金额) 
+
     //with fee
-    //feerate= 0.3% = 0.003    
+    //feerate= 0.3% = 0.003
+    //已知x_in算y_out    
     x_in=x_in*(1-0.003)
         =x_in*0.997
         =x_in*997/1000
@@ -28,7 +38,11 @@
          =x_in*997*y/(x*1000 + x_in*997/1000*1000)
          =x_in*997*y/(x*1000 + x_in*997)
     //得出：输出金额=输入金额 * 997 * 输出储量 / (1000*输入储量 + 输入金额*997) 
-    
+
+    //已知y_out算x_in
+    x_in=x * y_out * 1000 /(y-y_out)*997;
+    //输入金额=输入储量 * 输出金额 * 1000 /(输出储量-输出金额) * 997;
+
     //在withfee计算中的注意点：
     //设x=100 y=200 则k=x*y=20000
     //交易输入10个x
