@@ -139,3 +139,6 @@
     target_x=sqrt(price_y*x*y)/price_y
     x_increment=sqrt(price_y*x*y)/price_y-x
 
+    //withfee
+    //fee_rate=0.003=3/1000
+    
