@@ -115,4 +115,30 @@
 
     //得出：x输出数量= 要销毁的lptoken数量 * 合约x余额 / 总lptoken数量，y输出数量=要销毁的lptoken数量 * 合约y余额 / 总lptoken数量
     
+### 价格维护公式
+    //x：交易对其中一个token的当前储量
+    //y：交易对另一个token的当前储量
+    //price_y：目标价格（以y为计价单位）
+    //x_target：价格抵达price_y时x储量
+    //y_target：价格抵达price_y时y储量
+    //y_increment：价格抵达price_y时需要增加的y数量
+    //x_increment：价格抵达price_y时需要增加的x数量
+    target_x*target_y=k
+    target_x*target_y=x*y
+    target_x=x*y/target_y    
 
+    target_y/target_x=price_y
+    target_y=price_y*target_x
+    target_y=price_y*x*y/target_y
+    target_y*target_y=price_y*x*y
+    target_y=sqrt(price_y*x*y)
+    y_increment=target_y-y
+         =sqrt(p*x*y)-y
+
+    target_x=target_y/price_y
+    target_x=sqrt(price_y*x*y)/price_y
+    x_increment=sqrt(price_y*x*y)/price_y-x
+
+    //withfee
+    //fee_rate=0.003=3/1000
+    
