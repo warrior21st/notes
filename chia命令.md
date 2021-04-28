@@ -11,7 +11,7 @@
     //window默认安装路径(powershell)：~\AppData\Local\chia-blockchain\app-1.1.1\resources\app.asar.unpacked\daemon\chia.exe
     //Mac默认安装路径：/Applications/Chia.app/Contents/Resources/app.asar.unpacked/daemon/chia
 
-    //使用windows循环示例（循环执行10次）  
+    //windows命令执行循环示例（循环执行10次）  
     set time=10
     title ploting temp on d:\\ progress 0/%time%
 
