@@ -10,6 +10,20 @@
     //window默认安装路径(cmd)：%USERPROFILE%\AppData\Local\chia-blockchain\app-1.1.1\resources\app.asar.unpacked\daemon\chia.exe
     //window默认安装路径(powershell)：~\AppData\Local\chia-blockchain\app-1.1.1\resources\app.asar.unpacked\daemon\chia.exe
     //Mac默认安装路径：/Applications/Chia.app/Contents/Resources/app.asar.unpacked/daemon/chia
+
+    //使用windows循环示例  
+    set time=10
+    title ploting temp on c:\\ progress 0/%time%
+
+    FOR /l %%i IN (1,1,%time%) DO (
+        title  ploting temp on c:\\ progress %%i/%time%
+        cd %USERPROFILE%\AppData\Local\chia-blockchain\app-1.1.1\resources\app.asar.unpacked\daemon\
+        chia.exe plots create -k 32 -n 1 -b 5000 -f 80d9db5e03d373d45fd7e2e315b00d2ebac9b5a0b652319d94906da21b3a30f101fcb673ffbe17d4949d2723f6a4f3bb -p 87b2974d5ed1634b04d2e2d39c641f288130677cfd70d97e943838a904bd191bcfdecaa34e591d4a8456e3b995a38dbf -t d:\\chia_temp -d z:\\ -r 2 -u 128
+    )
+
+    echo all polt create tasks complete.
+    pause
+
 #### Storage requirements（以1.0.5以上版本为例）
 | K-size      | RAM Default Usage | Temp. Size | Final Size |
 | ----------- | -------------------- | -------- | ---------- |
