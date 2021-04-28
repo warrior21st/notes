@@ -11,9 +11,9 @@
     //window默认安装路径(powershell)：~\AppData\Local\chia-blockchain\app-1.1.1\resources\app.asar.unpacked\daemon\chia.exe
     //Mac默认安装路径：/Applications/Chia.app/Contents/Resources/app.asar.unpacked/daemon/chia
 
-    //使用windows循环示例  
+    //使用windows循环示例（循环执行10次）  
     set time=10
-    title ploting temp on c:\\ progress 0/%time%
+    title ploting temp on d:\\ progress 0/%time%
 
     FOR /l %%i IN (1,1,%time%) DO (
         title  ploting temp on c:\\ progress %%i/%time%
