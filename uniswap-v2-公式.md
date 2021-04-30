@@ -153,7 +153,7 @@
     0=1000*x*y - 1000*price_y*x² - (1000*x*price_y*x_in + 997*x*x_in*price_y) - 997*price_y*x_in²
     0=1000*x*y - 1000*price_y*x² - 1997*x*price_y*x_in - 997*price_y*x_in²
 
-    //将以上等式中1000*x*y-1000*price_y*x²视为c，-1997*x*price_y视为b，-997*price_y视为a，以上等式可以视为二元一次方程的一般形式：ax²+bx+c=0
+    //将以上等式中1000*x*y-1000*price_y*x²视为c，-1997*x*price_y视为b，-997*price_y视为a，以上等式可以视为二元一次方程的一般形式：ax²+bx+c=0（a≠0）
     //二元一次方程求根公式：root=-[-b±√(b²-4ac)]/2a
     //Δ>0时，方程有两个不相等的实数根
     //Δ=0时，方程有两个相等的实数根
