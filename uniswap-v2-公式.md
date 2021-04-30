@@ -140,5 +140,24 @@
     x_increment=sqrt(price_y*x*y)/price_y-x
 
     //withfee
-    //fee_rate=0.003=3/1000
-    
+    //fee_rate=0.3%=0.003=3/1000
+    price_y=(y-y_out)/(x+x_in)
+    y_out=x_in*997*y/(x*1000 + x_in*997) //swap输出金额计算公式
+    price_y=(y-x_in*997*y/(x*1000 + x_in*997))/(x+x_in)
+    price_y*(x + x_in)=y-x_in*997*y/(x*1000 + x_in*997)
+    y-price_y*x-price_y*x_in=x_in*997*y/(x*1000+x_in*997)
+    x_in*997*y=(1000*x + 997*x_in)*(y-price_y*x-price_y*x_in)
+    997*x_in*y=1000*x*y - 1000*x*price_y*x^2 - 1000*x*price_y*x_in + 997*x_in*y - 997*x_in*price_y*x - 997*x_in²*price_y
+    997*x_in*y=1000*x*y - 1000*price_y*x^2 - 1000*x*price_y*x_in + 997*x_in*y - 997*x_in*price_y*x - 997*x_in²*price_y
+    0=1000*x*y - 1000*price_y*x² - 1000*x*price_y*x_in - 997*x*x_in*price_y - 997*price_y*x_in²
+    0=1000*x*y - 1000*price_y*x² - (1000*x*price_y*x_in + 997*x*x_in*price_y) - 997*price_y*x_in²
+    0=1000*x*y - 1000*price_y*x² - 1997*x*price_y*x_in - 997*price_y*x_in²
+
+    //将以上等式中1000*x*y-1000*price_y*x²视为c，-1997*x*price_y视为b，-997*price_y视为a，以上等式可以视为二元一次方程的一般形式：ax²+bx+c=0
+    //二元一次方程求根公式：root=-[-b±√(b²-4ac)]/2a
+    //Δ>0时，方程有两个不相等的实数根
+    //Δ=0时，方程有两个相等的实数根
+    //Δ<时，方程无实数根，但有2个共轭复根    
+    Δ=(1997*x*price_y*-1)^2-4*997*price_y*-1*(1000*x*y-1000*price_y*x²)
+    x_in=(-(-1997*x*price_y)±sqrt((-1997*price_y*x)-))/2*(-997*price_y)
+    x_in=-1*((1997*x*price_y*-1)±sqrt((1997*x*price_y*-1)^2-4*997*price_y*-1*(1000*x*y-1000*price_y*x²)))/(2*997*price_y*-1)
