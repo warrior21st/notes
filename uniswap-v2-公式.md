@@ -141,8 +141,8 @@
 
     //withfee
     //fee_rate=0.3%=0.003=3/1000
+    //swap输出金额计算公式：y_out=x_in*997*y/(x*1000 + x_in*997)
     price_y=(y-y_out)/(x+x_in)
-    y_out=x_in*997*y/(x*1000 + x_in*997) //swap输出金额计算公式
     price_y=(y-x_in*997*y/(x*1000 + x_in*997))/(x+x_in)
     price_y*(x + x_in)=y-x_in*997*y/(x*1000 + x_in*997)
     y-price_y*x-price_y*x_in=x_in*997*y/(x*1000+x_in*997)
