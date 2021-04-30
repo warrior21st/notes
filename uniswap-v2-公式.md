@@ -133,7 +133,7 @@
     target_y*target_y=price_y*x*y
     target_y=sqrt(price_y*x*y)
     y_increment=target_y-y
-         =sqrt(p*x*y)-y
+         =sqrt(price_y*x*y)-y
 
     target_x=target_y/price_y
     target_x=sqrt(price_y*x*y)/price_y
