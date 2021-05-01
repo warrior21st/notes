@@ -6,7 +6,7 @@
     public class TotpHelper
     {
         /// <summary>
-        /// 生成google认证器secretkey
+        /// 生成totp secret
         /// </summary>
         /// <returns></returns>
         public static string GenSecret()
@@ -16,7 +16,7 @@
         }
 
         /// <summary>
-        /// 验证google认证器token
+        /// 验证totp token
         /// </summary>
         /// <param name="secret"></param>
         /// <param name="token"></param>
