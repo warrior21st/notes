@@ -1,4 +1,4 @@
-## netcore totp
+## aspnetcore totp
 #### packages
 - OtpSharp.Core 1.0.0
 
