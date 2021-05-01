@@ -3,6 +3,8 @@
 - OtpSharp.Core 1.0.0
 
 #### TotpHelper
+    public class TotpHelper
+    {
         /// <summary>
         /// 生成google认证器secretkey
         /// </summary>
@@ -27,5 +29,6 @@
 
             return valid;
         }
+    }
 
 - 参考https://www.jerriepelser.com/blog/using-google-authenticator-asp-net-identity
