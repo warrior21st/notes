@@ -2,7 +2,7 @@
 #### packages
 - OtpSharp.Core 1.0.0
 
-#### AuthenticatorHelper
+#### TotpHelper
         /// <summary>
         /// 生成google认证器secretkey
         /// </summary>
