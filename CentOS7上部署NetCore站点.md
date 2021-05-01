@@ -4,20 +4,20 @@
 
 #### 创建service
 
-	vi /etc/systemd/system/zkor.service
+	vi /etc/systemd/system/xxx.service
 
 内容如下
 
 	[Unit]	
-	Description=Zkor.COM	
+	Description=xxx	
 
 	[Service]	
-	WorkingDirectory=/root/wwwroot/zkor2.x	
-	ExecStart=/usr/bin/dotnet /root/wwwroot/zkor2.x/Zkor.COM.dll	
+	WorkingDirectory=/root/wwwroot/xxx.x	
+	ExecStart=/usr/bin/dotnet /root/wwwroot/xxx.x/xxx.dll	
 	Restart=always	
 	# Restart service after 10 seconds if dotnet service crashes	
 	RestartSec=10  
-	SyslogIdentifier=dotnet-zkor	
+	SyslogIdentifier=dotnet-xxx	
 	User=root	
 	Environment=ASPNETCORE_ENVIRONMENT=Production 	
 
@@ -26,16 +26,16 @@
 
 #### 启用service
 
-	systemctl enable zkor.service
+	systemctl enable xxx.service
 
 #### 运行service
 
-	systemctl start zkor.service
+	systemctl start xxx.service
 
 #### 停止service
 
-	systemctl stop zkor.service
+	systemctl stop xxx.service
 
 #### 查看服务状态
 
-	systemctl status zkor.service
+	systemctl status xxx.service
