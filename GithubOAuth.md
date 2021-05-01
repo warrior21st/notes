@@ -1,5 +1,4 @@
 ## Github OAuth API
-- 参照 https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/
 - 最终返回的用户信息格式
 
         {
@@ -35,3 +34,5 @@
             "created_at": "2015-08-26T08:07:10Z",
             "updated_at": "2019-11-27T03:15:18Z"
         }
+        
+- 参照 https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/

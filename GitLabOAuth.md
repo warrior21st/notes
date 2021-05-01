@@ -1,5 +1,4 @@
 ## gitlab oauth
-- 参照 https://docs.gitlab.com/ee/api/oauth2.html
 ##### code
         public IActionResult GitLabOAuth()
         {
@@ -63,3 +62,5 @@
         "shared_runners_minutes_limit": null,
         "extra_shared_runners_minutes_limit": null
     }
+
+- 参照 https://docs.gitlab.com/ee/api/oauth2.html
