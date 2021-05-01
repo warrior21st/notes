@@ -18,7 +18,7 @@
         /// <summary>
         /// 验证google认证器token
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="secret"></param>
         /// <param name="token"></param>
         /// <returns></returns>
         public static bool Verify(string secret,string token)
