@@ -1,6 +1,5 @@
-## aspnetCore使用基于时间的google令牌
-- 参考https://www.jerriepelser.com/blog/using-google-authenticator-asp-net-identity
-#### 依赖
+## aspnetcore totp
+#### packages
 - OtpSharp.Core 1.0.0
 
 #### AuthenticatorHelper
@@ -28,3 +27,5 @@
 
             return valid;
         }
+
+- 参考https://www.jerriepelser.com/blog/using-google-authenticator-asp-net-identity
