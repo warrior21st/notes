@@ -18,7 +18,7 @@
     FOR /l %%i IN (1,1,%time%) DO (
         title  ploting temp on c:\\ progress %%i/%time%
         cd %USERPROFILE%\AppData\Local\chia-blockchain\app-1.1.1\resources\app.asar.unpacked\daemon\
-        chia.exe plots create -k 32 -n 1 -b 5000 -f 80d9db5e03d373d45fd7e2e315b00d2ebac9b5a0b652319d94906da21b3a30f101fcb673ffbe17d4949d2723f6a4f3bb -p 87b2974d5ed1634b04d2e2d39c641f288130677cfd70d97e943838a904bd191bcfdecaa34e591d4a8456e3b995a38dbf -t d:\\chia_temp -d z:\\ -r 2 -u 128
+        chia.exe plots create -k 32 -n 1 -b 5000 -f 农民公钥 -p 矿池公钥 -t d:\\chia_temp -d z:\\ -r 2 -u 128
     )
 
     echo all polt create tasks complete.
