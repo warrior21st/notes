@@ -25,5 +25,5 @@
     WantedBy=multi-user.target
 
 ### 参考
-- 环境安装：https://golang.org/doc/install?download=go1.16.4.linux-amd64.tar.gz#download
+- 环境安装：https://golang.org/doc/install
 - 编译：http://c.biancheng.net/view/5725.html
