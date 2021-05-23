@@ -17,7 +17,7 @@
     WorkingDirectory=/root/goservices/blockscanner
     ExecStart=/root/goservices/blockscanner/scanner
     Restart=always	
-    RestartSec=10  # Restart service after 10 seconds if dotnet service crashes	
+    RestartSec=10  # Restart service after 10 seconds if service crashes	
     SyslogIdentifier=blockscanner-scanner	
     User=root 	
 
