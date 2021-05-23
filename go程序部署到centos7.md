@@ -3,7 +3,7 @@
     wget https://golang.org/dl/go1.16.4.linux-amd64.tar.gz
     rm -rf /usr/local/go && tar -C /usr/local -xzf go1.16.4.linux-amd64.tar.gz
     export PATH=$PATH:/usr/local/go/bin
-    $ go version
+    go version
 ### 编译
     //-o为指定输出文件名
     cd /root/goservices/blockscanner-code/src
