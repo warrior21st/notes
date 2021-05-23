@@ -7,7 +7,7 @@
 ### 编译
     //-o为指定输出文件名
     cd /root/goservices/blockscanner-code/src
-    go build -o /root/goservices/blockscanner/scanner
+    /usr/local/go/bin/go build -o /root/goservices/blockscanner/scanner
 
 ### systemd管理
     [Unit]	
