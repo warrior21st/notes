@@ -74,3 +74,6 @@
             //0xa253144ce409023b3a05a45365e88316ac02f1fd27d6dcd506778682737534b865156889d623aee9caaf3d393a94585e0d8eeb3a184b94b0f3ab2ce44b2ff6c61c
         }
     });
+
+#### 参考
+- https://eips.ethereum.org/EIPS/eip-712
