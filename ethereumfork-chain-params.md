@@ -35,4 +35,4 @@
 - chaiid：256
 - token：HT
 - scan site：https://testnet.hecoinfo.com/
-- faucet: https://testnet.binance.org/faucet-smart
+- faucet: https://scan-testnet.hecochain.com/faucet
