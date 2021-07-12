@@ -23,7 +23,7 @@
     //go get -u -v github.com/redefiance/ident
     go get -u -v github.com/warrior21st/ident@v0.0.0-20210712074938-4979a2ba59cd
     go get -u -v github.com/warrior21st/go-find-references@v0.0.0-20210712075418-eab9e8e70737
-    go get -u -v golang.org/x/tools/gopls
+    go get golang.org/x/tools/gopls@latest
 
 #### 修改vscode settings.json,按ctrl+shift+p，输入settings，点击Open Settings(JSON)
     {        
