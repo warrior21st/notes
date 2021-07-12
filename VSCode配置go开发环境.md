@@ -14,8 +14,8 @@
     go get -u -v github.com/acroca/go-symbols
     go get -u -v golang.org/x/tools/cmd/gorename
     go get -u -v golang.org/x/tools/cmd/guru
-    go get -u -v github.com/derekparker/delve/cmd/dlv    
-    go get -u -v github.com/golang/tools
+    go get -u -v github.com/go-delve/delve/cmd/dlv    
+    go get -u -v golang.org/x/tools
     go get -u -v github.com/josharian/impl
     go get -u -v github.com/cweill/gotests
     go get -u -v github.com/rogpeppe/godef
