@@ -9,7 +9,7 @@
 | WebSocket Endpoint | - |
 | Faucet | - |
 
-### BSC-TEST
+### BSC Testnet
 | Parameter | Value |
 | -------------- | ---------------- |
 | HTTP Endpoint | https://data-seed-prebsc-1-s1.binance.org:8545 |
@@ -29,7 +29,7 @@
 | WebSocket Endpoint | - |
 | Faucet | - |
 
-### HECO-TEST
+### HECO Testnet
 | Parameter | Value |
 | -------------- | ---------------- |
 | HTTP Endpoint | https://http-testnet.hecochain.com |
