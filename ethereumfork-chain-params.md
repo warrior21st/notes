@@ -79,12 +79,22 @@
 | WebSocket Endpoint | wss://ws-kovan.optimism.io |
 | Faucet | - |
 
+### Arbitrum
+| Parameter | Value |
+| -------------- | ---------------- |
+| HTTP Endpoint | use infura |
+| Chain ID | 42161 |
+| Currency | ETH |
+| Explorer | https://explorer.arbitrum.io/ |
+| WebSocket Endpoint | - |
+| Faucet | - |
+
 ### Arbitrum Testnet
 | Parameter | Value |
 | -------------- | ---------------- |
 | HTTP Endpoint | https://rinkeby.arbitrum.io/rpc |
 | Chain ID | 421611 |
 | Currency | ETH |
-| Explorer | https://rinkeby-explorer.arbitrum.io/#/ |
+| Explorer | https://rinkeby-explorer.arbitrum.io/ |
 | WebSocket Endpoint | - |
 | Faucet | - |
