@@ -1,4 +1,4 @@
-## ethereumfork blockchain params
+## ethereum compatible blockchain params
 ### BSC
 | Parameter | Value |
 | -------------- | ---------------- |
