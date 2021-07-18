@@ -44,7 +44,7 @@
 - 搜索 prevent,将"控制活动代码段是否阻止快速建议"去掉勾选
 
 
-#### windows mingw-w64 install
+#### mingw-w64 for windows install
 - 打开 https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/ 点击 MinGW-W64 Online Installer 下载mingw-w64安装器
 - 安装器文件地址: https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe
 - 打开安装器，Version选择需要的版本，Architecture选择x84-64，一路点击NEXT直到完成
