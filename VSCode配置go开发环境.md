@@ -48,4 +48,4 @@
 - 打开 https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/ 点击 MinGW-W64 Online Installer 下载mingw-w64安装器
 - 安装器文件地址: https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe
 - 打开安装器，Version选择需要的版本，Architecture选择x84-64，一路点击NEXT直到完成
-- 将安装路径添加到系统环境变量的 PATH 中
+- 将安装路径下的 mingw64\bin 目录添加到系统环境变量的 PATH 中，默认安装路径：C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\
