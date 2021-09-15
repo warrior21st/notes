@@ -35,9 +35,7 @@
 ### 安装git & 克隆仓库
     apt-get install git
 
-    cd /root
-
-    git clone https://github.com/graphprotocol/graph-node.git
+    git clone https://github.com/graphprotocol/graph-node.git /root/graph-node
 
 ### 修改docker-compose.yml
     //以heco为例，将 ethereum: 'mainnet:http://host.docker.internal:8545'    
@@ -82,7 +80,7 @@
     WorkingDirectory=/root/graph-node/docker
     ExecStart=/usr/bin/docker-compose -f /root/graph-node/docker/docker-compose.yml start
     ExecStop=/usr/bin/docker-compose -f /root/graph-node/docker/docker-compose.yml stop
-    Restart=always	
+    Restart=on-failure	
     # Restart service after 10 seconds if dotnet service crashes	
     RestartSec=10  
     SyslogIdentifier=graph-node-heco
