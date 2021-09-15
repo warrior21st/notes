@@ -27,7 +27,7 @@
     apt-get install git
 
     cd /root
-    
+
     git clone https://github.com/graphprotocol/graph-node.git
 
 ### 修改docker-compose.yml
@@ -57,7 +57,11 @@
 ### 默认端口说明
     //ipfs 端口：5001
     //ipfs webui: http://127.0.0.1:5001/webui
+    //ipfs 数据保存位置：/data/ipfs
+
     //postgresql 端口：5432
+    //postgresql 数据保存位置：/var/lib/postgresql/data
+    
     //graph-node 创建/部署端口：8020
     //graphql 端口：8000
 
