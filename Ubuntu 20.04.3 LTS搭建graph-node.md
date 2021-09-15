@@ -25,7 +25,9 @@
 
 ### 安装git & 克隆仓库
     apt-get install git
+
     cd /root
+    
     git clone https://github.com/graphprotocol/graph-node.git
 
 ### 修改docker-compose.yml
