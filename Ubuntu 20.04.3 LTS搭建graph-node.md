@@ -21,6 +21,15 @@
 
     sudo apt-get install docker-ce docker-ce-cli containerd.io
 ### 安装docker-compose
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+    sudo chmod +x /usr/local/bin/docker-compose
+
+    sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+    
+    docker-compose --version
+
+    //或
     apt-get install docker-compose
 
 ### 安装git & 克隆仓库
@@ -84,4 +93,5 @@
 
 ### 参考
 - docker安装：https://docs.docker.com/engine/install/ubuntu/
+- docker-compose安装：https://docs.docker.com/compose/install/
 - docker方式启动graph-node：https://github.com/graphprotocol/graph-node/blob/v0.24.0/docker/README.md
