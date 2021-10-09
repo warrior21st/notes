@@ -76,7 +76,7 @@
     WriteTimeout = 30000000000
     IdleTimeout = 120000000000
 
-### 初始化geth
+### 初始化私有链
      /geth/go-ethereum/build/bin/geth init --datadir /geth/private-chain /geth/genesis.json
 ### 启动geth
     //--mine 为启动挖矿
