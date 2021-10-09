@@ -1,4 +1,4 @@
-## geth私有链配置(ubuntu20.04LTS)
+## geth私有链部署(ubuntu20.04LTS)
 ### 创建目录
     mkdir /geth && chmod 755 /geth
     mkdir /geth/private-chain
@@ -17,7 +17,7 @@
     make geth
     //查看geth版本
     /geth/go-ethereum/build/bin/geth version
-### 编辑私有链创世块配置文件
+### 编辑创世块配置文件
     vi /geth/genesis.json
 
     //genesis.json内容
@@ -39,7 +39,7 @@
         "5948AA49f236a063E24EA42853c989E7055BDf81": { "balance": "1000000000000000000000000000000000" }
         }
     }
-### 编辑私有链config文件
+### 编辑config文件
     vi /geth/config.toml
 
     //config.toml内容
