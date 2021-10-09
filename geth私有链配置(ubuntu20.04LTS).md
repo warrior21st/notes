@@ -16,9 +16,9 @@
     cd /geth/go-ethereum
     make geth
     //查看geth版本
-    /root/geth/go-ethereum/build/bin/geth version
+    /geth/go-ethereum/build/bin/geth version
 ### 编辑私有链创世块配置文件
-    vi /root/geth/genesis.json
+    vi /geth/genesis.json
 
     //genesis.json内容
     {
@@ -40,7 +40,7 @@
         }
     }
 ### 编辑私有链config文件
-    vi /root/geth/config.toml
+    vi /geth/config.toml
 
     //config.toml内容
     [Eth]
