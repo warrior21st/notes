@@ -81,7 +81,7 @@
 ### 启动
     //--mine 为启动挖矿
     //--miner.threads=4 为使用cpu 4个线程挖矿
-     /geth/go-ethereum/build/bin/geth --config /geth/config.toml --mine --miner.threads=4 console 2>>/geth/private-chain/geth.log     
+    /geth/go-ethereum/build/bin/geth --config /geth/config.toml --mine --miner.threads=4 console 2>>/geth/private-chain/geth.log     
 
 ### 参考
 - https://geth.ethereum.org/docs/getting-started
