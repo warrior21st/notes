@@ -83,5 +83,5 @@
     /geth/go-ethereum/build/bin/geth --config /geth/config.toml --mine --miner.threads=4 console 2>>/geth/private-chain/geth.log     
 
 ### 参考
-- https://geth.ethereum.org/docs/getting-started
-- https://github.com/ethereum/go-ethereum/blob/master/cmd/geth/config.go#L88
+- 官方文档：https://geth.ethereum.org/docs/getting-started
+- 源代码中的配置项定义：https://github.com/ethereum/go-ethereum/blob/master/cmd/geth/config.go#L88
