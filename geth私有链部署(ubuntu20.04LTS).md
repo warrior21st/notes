@@ -79,7 +79,7 @@
      /geth/go-ethereum/build/bin/geth init --datadir /geth/private-chain /geth/genesis.json
 ### 启动
     //--mine 为启动挖矿
-    //--miner.threads=4 为使用cpu 4个线程挖矿
+    //--miner.threads=4 为使用4个cpu线程挖矿
     /geth/go-ethereum/build/bin/geth --config /geth/config.toml --mine --miner.threads=4 console 2>>/geth/private-chain/geth.log     
 
 ### 参考
