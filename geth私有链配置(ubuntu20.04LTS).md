@@ -48,7 +48,7 @@
 
     [Eth.TxPool]
     NoLocals = true
-    PriceLimit = 1000000000 # tx入池的最小gasprice
+    PriceLimit = 1000000000 # tx入池的最小gasprice(wei)
     AccountQueue = 1024
     GlobalQueue = 10240
 
