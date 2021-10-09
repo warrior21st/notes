@@ -13,8 +13,7 @@
     apt-get install git
     git clone https://github.com/ethereum/go-ethereum.git /geth/go-ethereum
 ### 编译go-ethereum
-    cd /geth/go-ethereum
-    make geth
+    make -C /geth/go-ethereum/ geth
     //查看geth版本
     /geth/go-ethereum/build/bin/geth version
 ### 编辑创世块配置文件
