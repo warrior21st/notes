@@ -21,7 +21,8 @@
 
 #### 修改ssh的配置
     sudo vi /etc/ssh/sshd_config
-#### 保持sshd_config文件中下面几个设置正确
+    
+    //保持sshd_config文件中下面几个设置正确
     Port 22 //端口号
     PermitRootLogin yes //允许root登录
     PasswordAuthentication yes //密码验证
