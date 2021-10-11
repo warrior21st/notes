@@ -23,6 +23,9 @@
 #### 方式2：下载geth可执行文件（稳定版）
     mkdir -p /geth/go-ethereum/build/bin
     wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.10.9-eae3b194.tar.gz -P /geth/go-ethereum/build/bin
+    tar -xzf /geth/go-ethereum/build/bin/geth-linux-amd64-1.10.9-eae3b194.tar.gz -C /geth/go-ethereum/build/bin
+    mv /geth/go-ethereum/build/bin/geth-linux-amd64-1.10.9-eae3b194/* /geth/go-ethereum/build/bin
+    rm -rf /geth/go-ethereum/build/bin/geth-linux-amd64-1.10.9-eae3b194
 
 ### 编辑创世块配置文件
     vi /geth/genesis.json
