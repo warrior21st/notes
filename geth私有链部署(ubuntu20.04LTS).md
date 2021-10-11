@@ -3,8 +3,8 @@
     mkdir /geth && chmod 755 /geth
     mkdir /geth/private-chain
 ### 下载golang
-    wget https://golang.org/dl/go1.17.2.linux-amd64.tar.gz /geth/golang
-    tar -xzf /geth/golang/go1.17.2.linux-amd64.tar.gz -C /geth 
+    wget https://golang.org/dl/go1.17.2.linux-amd64.tar.gz /geth
+    tar -xzf /geth/go1.17.2.linux-amd64.tar.gz -C /geth 
     export PATH=$PATH:/geth/go/bin
 
     //设置go代理(可选)
