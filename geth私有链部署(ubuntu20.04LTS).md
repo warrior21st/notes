@@ -3,19 +3,27 @@
     mkdir /geth && chmod 755 /geth
     mkdir /geth/private-chain
 ### 下载golang
-    wget https://golang.org/dl/go1.17.2.linux-amd64.tar.gz /geth
+    wget https://golang.org/dl/go1.17.2.linux-amd64.tar.gz -P /geth
     tar -xzf /geth/go1.17.2.linux-amd64.tar.gz -C /geth 
     export PATH=$PATH:/geth/go/bin
 
     //设置go代理(可选)
     go env -w GOPROXY=https://goproxy.cn 
-### 安装git & 克隆go-ethereum源代码
+### 安装go-ethereum
+#### 方式1：编译源代码
+    //安装git & 克隆go-ethereum源代码
     apt-get install git
     git clone https://github.com/ethereum/go-ethereum.git /geth/go-ethereum
-### 编译go-ethereum
+
+    //编译go-ethereum
     make -C /geth/go-ethereum/ geth
+
     //查看geth版本
     /geth/go-ethereum/build/bin/geth version
+#### 方式2：下载geth可执行文件（稳定版）
+    mkdir -p /geth/go-ethereum/build/bin
+    wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.10.9-eae3b194.tar.gz -P /geth/go-ethereum/build/bin
+
 ### 编辑创世块配置文件
     vi /geth/genesis.json
 
