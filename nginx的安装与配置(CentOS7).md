@@ -47,22 +47,18 @@
 		keepalive_timeout 29; # Adjust to the lowest possible value that makes sense for your use case.
 		client_body_timeout 10; client_header_timeout 10; send_timeout 10;
 	
-		upstream zkor{
-			server localhost:5000;
-		}
-	
 		server {
 			listen *:80;
-			server_name www.zkor.com zkor.com;
+			server_name www.xxx.com xxx.com;
 			add_header Strict-Transport-Security max-age=15768000;		
-			return 301 https://www.zkor.com$request_uri;
+			return 301 https://www.xxx.com$request_uri;
 		}
 	
 		server {
 			listen *:443    ssl;
-			server_name    zkor.com;
-			ssl_certificate /root/zkor_cert/zkor.crt;
-			ssl_certificate_key  /root/zkor_cert/zkor.key;
+			server_name    xxx.com;
+			ssl_certificate /root/xxx_cert/xxx.crt;
+			ssl_certificate_key  /root/xxx_cert/xxx.key;
 			ssl_protocols TLSv1.1 TLSv1.2;
 			ssl_prefer_server_ciphers on;
 			ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
@@ -78,13 +74,13 @@
 	
 			#Redirects all traffic
 
-			location /nginx-status-pass-zkor123456 {  
+			location /nginx-status-pass-xxx123456 {  
 			    stub_status on;
 			    access_log off;
 			} 
 
 			location / {
-			    proxy_pass  http://zkor;
+			    proxy_pass  http://localhost:5000;
 			    limit_req   zone=one burst=10;
 			}
 		}

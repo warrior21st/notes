@@ -98,7 +98,27 @@
 ### 启动
     //--mine 为启动挖矿
     //--miner.threads=4 为使用4个cpu线程挖矿
-    /geth/go-ethereum/build/bin/geth --config /geth/config.toml --mine --miner.threads=4 console 2>>/geth/private-chain/geth.log     
+    /geth/go-ethereum/build/bin/geth --config /geth/config.toml --mine --miner.threads=4 console 2>>/geth/private-chain/geth.log   
+
+### 使用systemd启动
+    //geth.service内容
+    [Unit]	
+    Description=geth
+    After=network.target
+
+    [Service]
+    Type=simple	
+    ExecStart=/geth/go-ethereum/build/bin/geth --config /geth/config.toml --mine --miner.threads=4
+    TimeoutStopSec=90
+    Restart=on-failure
+    RestartSec=10s
+    User=root
+    SyslogIdentifier=geth
+    StandardOutput=append:/geth/private-chain/geth_std_output.log
+    StandardError=append:/geth/private-chain/geth_output.log
+
+    [Install]	
+    WantedBy=multi-user.target    
 
 ### 参考
 - 官方文档：https://geth.ethereum.org/docs/getting-started
