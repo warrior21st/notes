@@ -114,8 +114,8 @@
     RestartSec=10s
     User=root
     SyslogIdentifier=geth
-    StandardOutput=append:/geth/private-chain/geth_std_output.log
-    StandardError=append:/geth/private-chain/geth_output.log
+    # StandardOutput=append:/geth/private-chain/geth_std_output.log
+    # StandardError=append:/geth/private-chain/geth_output.log
 
     [Install]	
     WantedBy=multi-user.target    
