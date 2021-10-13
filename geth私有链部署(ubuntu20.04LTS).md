@@ -65,28 +65,28 @@
 
     [Eth.TxPool]
     NoLocals = true
-    PriceLimit = 1000000000 # tx入池的最小gasprice(wei)
+    PriceLimit = 1000000000
     AccountQueue = 1024
     GlobalQueue = 10240
 
     [Eth.Miner]
-    Etherbase = "0x5948AA49f236a063E24EA42853c989E7055BDf81" # 矿工地址
+    Etherbase = "0xfAe915e700847328e33af8F6921bec93CE06F995"
     GasPrice = 1000000000
     GasFloor = 1
     GasCeil = 80000000
 
     [Node]
     DataDir = '/geth/private-chain'
-    HTTPHost = '0.0.0.0'
-    HTTPPort = 8545
+    HTTPHost = 'localhost'
+    HTTPPort = 5055
     HTTPModules = ["net", "web3", "eth", "debug"]
     HTTPCors = ["*"]
-    WSPort = 8546
+    WSPort = 5056
     WSModules = ["net", "web3", "eth", "debug"]
 
     [Node.P2P]
     MaxPeers = 25
-    NoDiscovery = true # 单节点设置为不启用节点发现
+    NoDiscovery = true
 
     [Node.HTTPTimeouts]
     ReadTimeout = 30000000000
@@ -98,7 +98,7 @@
 ### 启动
     //--mine 为启动挖矿
     //--miner.threads=4 为使用4个cpu线程挖矿
-    /geth/go-ethereum/build/bin/geth --config /geth/config.toml --mine --miner.threads=4 console 2>>/geth/private-chain/geth.log   
+    /geth/go-ethereum/build/bin/geth --config /geth/config.toml --mine --miner.threads=4 console 2>>/geth/private-chain/geth.log 
 
 ### 使用systemd启动
     //geth.service内容
@@ -119,6 +119,47 @@
 
     [Install]	
     WantedBy=multi-user.target    
+
+### nginx代理配置(nginx.conf)
+    user  nginx;
+    worker_processes  auto;
+
+    # error_log  /var/log/nginx/error.log notice;
+    # pid        /var/run/nginx.pid;
+
+    events {
+        worker_connections  1024;
+    }
+
+    http {
+        map $http_upgrade $connection_upgrade {
+            default upgrade;
+            ''   close;
+        }
+
+        sendfile off;
+        keepalive_timeout 65; # Adjust to the lowest possible value that makes sense for your use case.
+        client_body_timeout 10; client_header_timeout 10; send_timeout 10;
+
+        server {
+            listen 8045;
+
+            location / {
+                proxy_pass  http://localhost:8045;
+            }
+        }
+
+        server {
+            listen 8046;
+
+            location / {
+                proxy_pass  http://localhost:8046;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection $connection_upgrade;
+            }
+        }
+    }
 
 ### 参考
 - 官方文档：https://geth.ethereum.org/docs/getting-started
