@@ -50,7 +50,7 @@
         gzip  on;
 
         server {
-            listen       1001;
+            listen       555;
 
             location /ipfs {
                 proxy_pass http://127.0.0.1:8080/ipfs;
