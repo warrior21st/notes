@@ -9,18 +9,68 @@
 
     //设置go代理(可选)
     go env -w GOPROXY=https://goproxy.cn 
-### 安装go-ethereum
-#### 方式1：编译源代码
+### 克隆go-ethereum代码
     //安装git & 克隆go-ethereum源代码
     apt-get install git
-    git clone https://github.com/ethereum/go-ethereum.git /geth/go-ethereum
+    git clone -b v1.10.9 https://github.com/ethereum/go-ethereum.git /geth/go-ethereum
 
+### 修改挖矿难度计算逻辑
+    vi /geth/go-ethereum/consensus/ethash/consensus.go
+
+    //将
+    func CalcDifficulty(config *params.ChainConfig, time uint64, parent *types.Header) *big.Int {
+        next := new(big.Int).Add(parent.Number, big1)
+        switch {
+        case config.IsCatalyst(next):
+            return big.NewInt(1)
+        case config.IsLondon(next):
+            return calcDifficultyEip3554(time, parent)
+        case config.IsMuirGlacier(next):
+            return calcDifficultyEip2384(time, parent)
+        case config.IsConstantinople(next):
+            return calcDifficultyConstantinople(time, parent)
+        case config.IsByzantium(next):
+            return calcDifficultyByzantium(time, parent)
+        case config.IsHomestead(next):
+            return calcDifficultyHomestead(time, parent)
+        default:
+            return calcDifficultyFrontier(time, parent)
+        }
+    }
+    //修改为
+    func CalcDifficulty(config *params.ChainConfig, time uint64, parent *types.Header) *big.Int {
+        //if parent block number is greater than 0,then return parent block's difficulty
+        if parent.Number.Cmp(big.NewInt(0)) == 1 {
+            return parent.Difficulty
+        }
+
+        next := new(big.Int).Add(parent.Number, big1)
+        switch {
+        case config.IsCatalyst(next):
+            return big.NewInt(1)
+        case config.IsLondon(next):
+            return calcDifficultyEip3554(time, parent)
+        case config.IsMuirGlacier(next):
+            return calcDifficultyEip2384(time, parent)
+        case config.IsConstantinople(next):
+            return calcDifficultyConstantinople(time, parent)
+        case config.IsByzantium(next):
+            return calcDifficultyByzantium(time, parent)
+        case config.IsHomestead(next):
+            return calcDifficultyHomestead(time, parent)
+        default:
+            return calcDifficultyFrontier(time, parent)
+        }
+	}
+
+### 编译
     //编译go-ethereum
     make -C /geth/go-ethereum/ geth
 
     //查看geth版本
     /geth/go-ethereum/build/bin/geth version
-#### 方式2：下载geth可执行文件（稳定版）
+
+<!-- #### 方式2：下载geth可执行文件（稳定版）
     mkdir -p /geth/go-ethereum/build/bin
 
     wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.10.9-eae3b194.tar.gz -P /geth/go-ethereum/build/bin
@@ -29,7 +79,7 @@
 
     mv /geth/go-ethereum/build/bin/geth-linux-amd64-1.10.9-eae3b194/* /geth/go-ethereum/build/bin
     
-    rm -rf /geth/go-ethereum/build/bin/geth-linux-amd64-1.10.9-eae3b194
+    rm -rf /geth/go-ethereum/build/bin/geth-linux-amd64-1.10.9-eae3b194 -->
 
 ### 编辑创世块配置文件
     vi /geth/genesis.json
@@ -47,7 +97,7 @@
         "petersburgBlock": 0,
         "ethash": {}
         },
-        "difficulty": "629145",
+        "difficulty": "0xe6665",
         "gasLimit": "80000000",
         "alloc": {
             "5948AA49f236a063E24EA42853c989E7055BDf81": { "balance": "1000000000000000000000000000000000" }
