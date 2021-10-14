@@ -1,4 +1,4 @@
-## ipfs以及网关部署(Ubuntu 20.04.3LTS)
+## ipfs以及nginx代理网关部署(Ubuntu 20.04.3LTS)
 ### 下载golang
     wget https://golang.org/dl/go1.17.2.linux-amd64.tar.gz -P /geth
     tar -xzf /geth/go1.17.2.linux-amd64.tar.gz -C /geth 
@@ -32,7 +32,8 @@
     [Install]
     WantedBy=multiuser.target
 
-### nginx.conf
+### 使用nginx代理网关
+    //nginx.conf内容
     #user  nobody;
     worker_processes  auto;
 
