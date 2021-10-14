@@ -14,7 +14,7 @@
     apt-get install git
     git clone -b v1.10.9 https://github.com/ethereum/go-ethereum.git /geth/go-ethereum
 
-### 修改挖矿难度计算逻辑
+### 修改出块难度计算代码
     vi /geth/go-ethereum/consensus/ethash/consensus.go
 
     //将
