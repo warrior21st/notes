@@ -39,28 +39,8 @@
     }
     //修改为
     func CalcDifficulty(config *params.ChainConfig, time uint64, parent *types.Header) *big.Int {
-        //if parent block number is greater than 0,then return parent block's difficulty
-        if parent.Number.Cmp(big.NewInt(0)) == 1 {
-            return parent.Difficulty
-        }
-
-        next := new(big.Int).Add(parent.Number, big1)
-        switch {
-        case config.IsCatalyst(next):
-            return big.NewInt(1)
-        case config.IsLondon(next):
-            return calcDifficultyEip3554(time, parent)
-        case config.IsMuirGlacier(next):
-            return calcDifficultyEip2384(time, parent)
-        case config.IsConstantinople(next):
-            return calcDifficultyConstantinople(time, parent)
-        case config.IsByzantium(next):
-            return calcDifficultyByzantium(time, parent)
-        case config.IsHomestead(next):
-            return calcDifficultyHomestead(time, parent)
-        default:
-            return calcDifficultyFrontier(time, parent)
-        }
+        //always use genesis block's difficulty
+        return parent.Difficulty
 	}
 
 ### 编译
