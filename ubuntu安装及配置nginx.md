@@ -7,7 +7,7 @@
 
     sudo apt install nginx
 
-### 编译代码方式
+### 编译代码方式安装
 - 包地址：https://nginx.org/en/download.html
 - 编译代码说明：https://nginx.org/en/docs/configure.html
 
