@@ -1,6 +1,6 @@
 ## ubuntu安装及配置nginx
 
-### 下载及安装
+### 安装
     sudo apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
 
     sudo apt update
