@@ -1,4 +1,4 @@
-# nginx configs
+# nginx config samples
 
 ## rewrite sample 
 
