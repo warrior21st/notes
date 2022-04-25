@@ -24,6 +24,13 @@
     [Install]	
     WantedBy=multi-user.target
 
+### 跨平台build linux版本
+    // windows power shell
+    go env -w GOOS=linux
+    go env -w GOARCH=amd64
+    go build main.go
+    go env -w GOOS=windows
+
 ### 参考
 - 环境安装：https://golang.org/doc/install
 - 编译：http://c.biancheng.net/view/5725.html
