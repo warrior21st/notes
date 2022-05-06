@@ -28,7 +28,7 @@
     // windows power shell
     go env -w GOOS=linux
     go env -w GOARCH=amd64
-    go build main.go
+    go build -o ./build
     go env -w GOOS=windows
 
 ### 参考
