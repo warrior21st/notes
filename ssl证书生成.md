@@ -15,7 +15,7 @@
 ## 生成ssl证书
     // 证书有效期3个月
     sudo certbot certonly --email xxx@gmail.com -d xxx.com,*.xxx.com --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
-- 此命令会自动生成一个随机字符串，在域名管理里添加一条记录，类型为 TXT，KEY为 ，VALUE为随机字符串
+- 此命令会自动生成一个随机字符串，在域名管理里添加一条记录，类型为 TXT，KEY为 _acme-challenge，VALUE为随机字符串
 - 等几分钟在命令行按回车验证
 
 ## 测试重新生成
