@@ -17,6 +17,11 @@
     sudo apt-get install liblz4-dev
     sudo apt-get install libzstd-dev
 
+### 设置环境变量
+    export CPLUS_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}:/usr/local/include
+    export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
+    export LIBRARY_PATH=${LIBRARY_PATH}:/usr/local/lib
+
 ### 安装rocksdb
     // macos & ubuntu
     wget https://github.com/facebook/rocksdb/archive/refs/tags/v7.8.3.tar.gz
@@ -33,11 +38,7 @@
 
 ### grocksdb
     import "github.com/linxGnu/grocksdb"
-
-    export CPLUS_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}:/usr/local/include
-    export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
-    export LIBRARY_PATH=${LIBRARY_PATH}:/usr/local/lib
-
+    
     CGO_CFLAGS="-I/usr/local/include/rocksdb/" \
     CGO_LDFLAGS="-L/usr/local/lib -lrocksdb -lstdc++ -lm -lz -lbz2 -lsnappy -llz4 -lzstd" \
     GOOS=linux GOARCH=amd64 CGO_ENABLED=1 go build  -o ./build
