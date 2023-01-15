@@ -32,6 +32,8 @@
     sudo ln -fs librocksdb.so.7.8.3 /usr/local/lib/librocksdb.so
 
 ### grocksdb
+    import "github.com/linxGnu/grocksdb"
+
     export CPLUS_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}:/usr/local/include
     export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
     export LIBRARY_PATH=${LIBRARY_PATH}:/usr/local/lib
