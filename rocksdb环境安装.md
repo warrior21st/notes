@@ -41,3 +41,8 @@
     CGO_CFLAGS="-I/usr/local/include/rocksdb/" \
     CGO_LDFLAGS="-L/usr/local/lib -lrocksdb -lstdc++ -lm -lz -lbz2 -lsnappy -llz4 -lzstd" \
     GOOS=linux GOARCH=amd64 CGO_ENABLED=1 go build  -o ./build
+
+
+### 参考
+- https://github.com/facebook/rocksdb
+- https://github.com/facebook/rocksdb/blob/main/INSTALL.md
