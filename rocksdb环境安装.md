@@ -16,6 +16,9 @@
     sudo apt-get install libbz2-dev
     sudo apt-get install liblz4-dev
     sudo apt-get install libzstd-dev
+    
+    sudo apt-get install gcc
+    sudo apt-get install g++
 
 ### 设置环境变量
     export CPLUS_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}:/usr/local/include
