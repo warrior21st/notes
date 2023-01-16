@@ -38,6 +38,8 @@
 
 ### grocksdb
     import "github.com/linxGnu/grocksdb"
+   
+    export PATH=$PATH:/usr/local/go/bin
 
     CGO_CFLAGS="-I/usr/local/include/rocksdb/" \
     CGO_LDFLAGS="-L/usr/local/lib -lrocksdb -lstdc++ -lm -lz -lbz2 -lsnappy -llz4 -lzstd" \
