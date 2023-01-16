@@ -17,6 +17,7 @@
     sudo apt-get install liblz4-dev
     sudo apt-get install libzstd-dev
     
+    sudo apt-get install make
     sudo apt-get install gcc
     sudo apt-get install g++
 
