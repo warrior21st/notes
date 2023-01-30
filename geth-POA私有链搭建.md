@@ -1,6 +1,6 @@
 # geth POA
 
-### 下载geth文件
+### 下载geth文件和工具
     sudo mkdir /opt/geth_private
     sudo chown ubuntu /opt/geth_private
     cd /opt/geth_private
