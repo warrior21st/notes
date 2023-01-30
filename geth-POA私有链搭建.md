@@ -59,7 +59,7 @@
     cd /opt/geth_private/clef/
     ./clef --keystore /opt/geth_private/geth/data/keystore --configdir ./config --chainid 20000 --suppress-bootwarn init
 
-    // 初始化完成之后需要立即备份 config/masterseed.json 和 master密码
+    // 初始化完成之后立即备份 config/masterseed.json 和 master密码
 
 ### 将keystore存储到clef
     ./clef --keystore /opt/geth_private/geth/data/keystore --configdir ./config --chainid 20000 --suppress-bootwarn setpw {地址0}
