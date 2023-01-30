@@ -52,7 +52,7 @@
         }
     }
 
-### 初始化
+### 初始化区块链
     ./geth init --datadir ./data ./genesis.json
 
 ### 初始化clef
