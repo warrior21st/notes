@@ -125,7 +125,10 @@
 
 ### 启动geth(安全)
     ./geth --config /opt/geth_private/geth/config.toml --signer /opt/geth_private/clef/config/clef.ipc --mine --mine --miner.threads=1 console
-
+    
+    // 非正常关闭后启动报错可带 --ignore-legacy-receipts
+    ./geth --config /opt/geth_private/geth/config.toml --signer /opt/geth_private/clef/config/clef.ipc --ignore-legacy-receipts --mine --mine --miner.threads=1 console
+    
 ### 启动geth(不安全，可不配置clef）
     ./geth --config /opt/geth_private/geth/config.toml --unlock "account0" --password="pwd.txt" --allow-insecure-unlock --mine --miner.threads=1 console
 
